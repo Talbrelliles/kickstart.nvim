@@ -11,14 +11,21 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '<leader>lf', ':Neotree filesystem reveal<CR>', { desc = 'NeoTree filesystem' } },
+    { '<leader>lg', ':Neotree git_status reveal<CR>', { desc = 'NeoTree git status' } },
+    { '<leader>lb', ':Neotree buffers reveal<CR>', { desc = 'NeoTree buffers' } },
+    { '<leader>ll', ':Neotree last reveal<CR>', { desc = 'NeoTree last' } },
+    { '<leader>lq', ':Neotree close<CR>', { desc = 'close NeoTree' } },
   },
   opts = {
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
+    close_if_last_window = true,
+    source_selectore = {
+      winbar = true,
+      statusline = true,
+    },
+    window = {
+      mappings = {
+        ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
       },
     },
   },
