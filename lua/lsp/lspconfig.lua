@@ -165,6 +165,38 @@ return {
             },
           },
         },
+        prettier = {},
+        tsserver = {
+          root_dir = function(...)
+            return require('lspconfig.util').root_pattern '.git'(...)
+          end,
+          single_file_support = false,
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'literal',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        angularls = {},
       }
       local tools = {
         -- TODO: get node working so I can install web dev tools
@@ -184,7 +216,7 @@ return {
       -- for you, so that they are available from within Neovim.
       -- local ensure_installed = vim.tbl_keys(servers or {})
       local ensure_installed_tools = vim.tbl_keys(tools or {})
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed_tools}
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed_tools }
 
       require('mason-lspconfig').setup {
         handlers = {
