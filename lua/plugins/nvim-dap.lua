@@ -1,48 +1,37 @@
 return {
-  {
-    'mfussenegger/nvim-dap',
-    keys = {
-      {
-        '<leader>Dp',
-        function()
-          require('dap').toggle_breakpoint()
-        end,
-        mode = { 'n' },
-        desc = 'add nvim-dap breakpoint',
-      },
-      {
-        '<leader>Dc',
-        function()
-          require('dap').continue()
-        end,
-        mode = { 'n' },
-        desc = 'add nvim-dap launch and continue',
-      },
-      {
-        '<leader>D]',
-        function()
-          require('dap').step_into()
-        end,
-        mode = { 'n' },
-        desc = 'nvim-dap step into',
-      },
-      {
-        '<leader>D>',
-        function()
-          require('dap').step_over()
-        end,
-        mode = { 'n' },
-        desc = 'nvim-dap step over',
-      },
-      {
-        '<leader>Do',
-        function()
-          require('dap').repl.open()
-        end,
-        mode = { 'n' },
-        desc = 'open nvim-dap',
-      },
-    },
+  'mfussenegger/nvim-dap',
+  dependencies = {
+    'rcarriga/nvim-dap-ui',
+    'nvim-neotest/nvim-nio',
+    'nvim-dap-python',
   },
-  { 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' } },
+  config = function()
+    local dap = require 'dap'
+    local dapui = require 'dapui'
+
+    --Python
+    require('dap-python').setup '/home/talmage/.virtualenvs/debugpy/bin/python'
+    require('dapui').setup()
+    require('dap-python').resolve_python = function()
+      return require('swenv').swenv_api.get_current_venv()
+    end
+
+    --UI setup
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+    end
+
+    vim.keymap.set('n', '<Leader>Db', dap.toggle_breakpoint, { desc = 'Toggle Breakpoint for Debugger' })
+    vim.keymap.set('n', '<Leader>Dc', dap.continue, { desc = 'Start/Continue Debugging' })
+    vim.keymap.set({ 'n', 'v' }, '<Leader>De', dapui.eval, { desc = 'Evaluate Current Expression' })
+  end,
 }
