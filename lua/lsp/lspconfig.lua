@@ -150,6 +150,7 @@ return {
           },
         },
         ruff = {},
+        gdscript = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -217,6 +218,9 @@ return {
       -- local ensure_installed = vim.tbl_keys(servers or {})
       local ensure_installed_tools = vim.tbl_keys(tools or {})
       require('mason-tool-installer').setup { ensure_installed = ensure_installed_tools }
+
+      -- NOTE: godot seems a bit tricky, so it might be best to just call this here
+      require('lspconfig').gdscript.setup(capabilities)
 
       require('mason-lspconfig').setup {
         handlers = {

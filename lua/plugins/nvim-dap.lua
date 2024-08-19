@@ -16,6 +16,19 @@ return {
       return require('swenv').swenv_api.get_current_venv()
     end
 
+    --GODOT
+    dap.adapters.godot = {
+      type = 'server',
+      host = '127.0.0.1',
+      port = 6006,
+    }
+    dap.configurations.gdscript = {
+      type = 'godot',
+      request = 'launch',
+      name = 'Launch scene',
+      project = '${workspaceFolder}',
+    }
+
     --UI setup
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
