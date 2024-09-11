@@ -3,14 +3,14 @@ return {
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
-    'nvim-dap-python',
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
 
     --Python
-    require('dap-python').setup '/home/talmage/.virtualenvs/debugpy/bin/python'
+    require('dap-python').setup '/home/taimase/.virtualenvs/debugger/bin/python'
     require('dapui').setup()
     require('dap-python').resolve_python = function()
       return require('swenv').swenv_api.get_current_venv()

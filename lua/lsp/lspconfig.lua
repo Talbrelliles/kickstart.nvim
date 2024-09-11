@@ -198,6 +198,7 @@ return {
           },
         },
         angularls = {},
+        clangd = {},
       }
       local tools = {
         -- TODO: get node working so I can install web dev tools

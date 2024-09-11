@@ -13,8 +13,5 @@ return {
   init = function()
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
-    vim.g.dbs = {
-      { name = 'dbname', url = 'postgres://postgres:password@url/db' },
-    }
   end,
 }
