@@ -2,7 +2,7 @@ vim.cmd 'let g:netrw_liststyle = 3'
 local opt = vim.opt
 
 vim.opt.showmode = false
-
+vim.opt.swapfile = false
 opt.relativenumber = true
 opt.number = true
 
