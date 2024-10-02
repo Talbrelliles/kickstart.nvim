@@ -10,11 +10,15 @@ return {
     local dapui = require 'dapui'
 
     --Python
-    require('dap-python').setup '/home/taimase/.virtualenvs/debugger/bin/python'
+    require('dap-python').setup(vim.fn.expand '~/.virtualenvs/debugger/bin/python')
     require('dapui').setup()
     require('dap-python').resolve_python = function()
       return require('swenv').swenv_api.get_current_venv()
     end
+    require('dap-python').test_runner = 'pytest'
+    vim.keymap.set({ 'n', 'v' }, '<Leader>Dt', function()
+      require('dap-python').test_method()
+    end, { desc = 'Run unit tests' })
 
     --GODOT
     dap.adapters.godot = {
