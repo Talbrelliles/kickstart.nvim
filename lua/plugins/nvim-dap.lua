@@ -48,6 +48,18 @@ return {
         cwd = '${workspaceFolder}',
         stopAtBeginningOfMainSubprogram = false,
       },
+      -- {
+      --   name = 'Launch with args',
+      --   type = 'gdb',
+      --   request = 'launch',
+      --   program = function()
+      --     local args_string =  vim.fn.input("Arguments: ")
+      --     local args = vim.split(args_string, " +")
+      --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      --   end,
+      --   cwd = '${workspaceFolder}',
+      --   stopAtBeginningOfMainSubprogram = false,
+      -- },
       {
         name = 'Select and attach to process',
         type = 'gdb',
@@ -72,6 +84,7 @@ return {
         cwd = '${workspaceFolder}',
       },
     }
+    dap.configurations.c = dap.configurations.cpp
 
     --UI setup
     dap.listeners.before.attach.dapui_config = function()
