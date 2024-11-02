@@ -151,7 +151,7 @@ return {
         },
         ruff = {},
         gdscript = {},
-
+        toml = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
