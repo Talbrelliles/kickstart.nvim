@@ -48,18 +48,20 @@ return {
         cwd = '${workspaceFolder}',
         stopAtBeginningOfMainSubprogram = false,
       },
-      -- {
-      --   name = 'Launch with args',
-      --   type = 'gdb',
-      --   request = 'launch',
-      --   program = function()
-      --     local args_string =  vim.fn.input("Arguments: ")
-      --     local args = vim.split(args_string, " +")
-      --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      --   end,
-      --   cwd = '${workspaceFolder}',
-      --   stopAtBeginningOfMainSubprogram = false,
-      -- },
+      {
+        name = 'Launch with args',
+        type = 'gdb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopAtBeginningOfMainSubprogram = false,
+        args = function()
+          local args_string = vim.fn.input 'Arguments: '
+          return vim.split(args_string, ' +')
+        end,
+      },
       {
         name = 'Select and attach to process',
         type = 'gdb',

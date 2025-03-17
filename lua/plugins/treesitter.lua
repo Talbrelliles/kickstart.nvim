@@ -32,6 +32,8 @@ return {
         'gitignore',
         'query',
         'vimdoc',
+        'r',
+        'rnoweb',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

@@ -1,0 +1,63 @@
+return {
+--  'saghen/blink.cmp',
+--  dependencies = {
+--    'rafamadriz/friendly-snippets',
+--    'hrsh7th/cmp-buffer',
+--    'hrsh7th/cmp-nvim-lsp',
+--    'hrsh7th/cmp-path',
+--    'saadparwaiz1/cmp_luasnip',
+--    --    {
+--    --      'L3MON4D3/LuaSnip',
+--    --      build = (function()
+--    --        return 'make install_jsregexp'
+--    --      end)(),
+--    --      dependencies = {
+--    --        -- `friendly-snippets` contains a variety of premade snippets.
+--    --        --    See the README about individual language/framework/plugin snippets:
+--    --        --    https://github.com/rafamadriz/friendly-snippets
+--    --        {
+--    --          'rafamadriz/friendly-snippets',
+--    --          config = function()
+--    --            require('luasnip.loaders.from_vscode').lazy_load()
+--    --          end,
+--    --        },
+--    --        'onsails/lspkind.nvim',
+--    --      },
+--    -- },
+--  },
+--  version = '*',
+--  opts = {
+--    keymap = {
+--      preset = 'none',
+--      ['<C-space>'] = {},
+--      ['<C-m>'] = { 'show', 'show_documentation', 'hide_documentation' },
+--      ['<C-e>'] = { 'cancel', 'fallback' },
+--      ['<C-y>'] = { 'select_and_accept' },
+--
+--      ['<Up>'] = { 'select_prev', 'fallback' },
+--      ['<Down>'] = { 'select_next', 'fallback' },
+--      ['<C-p>'] = { 'select_prev', 'fallback' },
+--      ['<C-n>'] = { 'select_next', 'fallback' },
+--
+--      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+--      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+--
+--      ['<Tab>'] = { 'snippet_forward', 'fallback' },
+--      ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+--
+--      ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+--    },
+--    appearance = {
+--      -- use_nvimp_cmp_as_default = true,
+--      nerd_font_variant = 'mono',
+--    },
+--  },
+--  sources = {
+--    'nvim_lsp',
+--    'vim-dadbod-completion',
+--    --    'luasnip',
+--    'path',
+----    'buffer',
+--  },
+--  opts_extend = { 'sources.default' },
+}
