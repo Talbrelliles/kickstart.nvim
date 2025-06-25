@@ -1,10 +1,13 @@
 return {
   'eldritch-theme/eldritch.nvim',
-
   lazy = false,
   priority = 1000,
-  opts = {},
-  config = function()
+  opts = {
+    transparent = true,
+  },
+  config = function(_, opts)
+    -- load the colorscheme here
+    require('eldritch').setup(opts)
     vim.cmd [[colorscheme eldritch]]
   end,
 }

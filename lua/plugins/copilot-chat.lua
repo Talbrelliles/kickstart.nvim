@@ -1,24 +1,23 @@
 return {
-  'CopilotC-Nvim/CopilotChat.nvim',
-  event = 'VeryLazy',
-  enabled = true,
-  branch = 'canary', -- while in development
-  dependencies = {
-    { 'zbirenbaum/copilot.lua' },
-    { 'nvim-lua/plenary.nvim' },
-  },
-  opts = {
-    debug = false, -- Enable debugging
-    mappings = {
-      reset = {
-        normal = '<C-n>',
-        insert = '<C-n>',
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' },
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      mappings = {
+        submit_prompt = {
+          normal = '<CR>',
+        },
+        reset = {
+          normal = '<Leader>db',
+        },
       },
     },
+    keys = {
+      { '<Leader>dt', '<cmd>CopilotChatToggle<cr>', desc = 'Copilot Chat' },
+    },
   },
-  config = function(_, opts)
-    require('CopilotChat').setup(opts)
-    require('CopilotChat.integrations.cmp').setup()
-    vim.keymap.set('n', '<leader>dt', ':CopilotChatToggle<CR>', { desc = 'Copilot Chat' })
-  end,
 }

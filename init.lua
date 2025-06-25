@@ -1,6 +1,4 @@
-require("core")
-
-
+require 'core'
 
 -- lazy setup
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -9,7 +7,7 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup({
-  {import = 'plugins'},
-  {import = 'lsp'},
-})
+require('lazy').setup {
+  { import = 'plugins' },
+  { import = 'lsp' },
+}
