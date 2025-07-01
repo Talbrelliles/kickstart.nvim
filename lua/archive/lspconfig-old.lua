@@ -247,17 +247,4 @@ return {
   {
     'ray-x/lsp_signature.nvim',
   },
-  {
-    --NOTE: using dads custom corn to avoid unnamed buffer bug
-    'dreyln/corn.nvim',
-    event = 'VeryLazy',
-    opts = {
-      on_toggle = function(_)
-        vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
-      end,
-      item_preprocess_func = function(item)
-        return item
-      end,
-    },
-  },
 }

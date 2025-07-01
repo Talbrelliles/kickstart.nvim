@@ -29,6 +29,13 @@ function plugin.config()
         next = '<M-j>',
       },
     },
+    server_opts_overrides = {
+      settings = {
+        telemetry = {
+          telemetryLevel = 'off',
+        },
+      },
+    },
   }
   vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#326457' })
   vim.api.nvim_set_hl(0, 'CopilotAnnotation', { fg = '#326457' })

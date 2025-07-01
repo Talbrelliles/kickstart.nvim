@@ -30,10 +30,6 @@ return { -- Autocompletion
         'onsails/lspkind.nvim',
       },
     },
-
-    -- Adds other completion capabilities.
-    --  nvim-cmp does not ship with all sources by default. They are split
-    --  into multiple repos for maintenance purposes.
   },
   config = function()
     -- See `:help cmp`
@@ -48,11 +44,6 @@ return { -- Autocompletion
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-
-      -- For an understanding of why these mappings were
-      -- chosen, you will need to read `:help ins-completion`
-      --
-      -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
         -- Scroll the documentation window [b]ack / [f]orward
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
